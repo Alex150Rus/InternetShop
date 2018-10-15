@@ -1,0 +1,115 @@
+
+.shippingaddress
+  +fldj(flex, space-between)
+  border-bottom: 1px solid #eaeaea
+  padding: 15px 0 79px 0
+  &__left
+    display: flex
+    flex-direction: column
+  &__right
+    display: flex
+    flex-direction: column
+  &__headers
+    color: #222222
+    +fws(400, 13px)
+    font-size: 13px
+    font-weight: 400
+    text-transform: uppercase
+  &__formheaders, &__formguestOrRegistered
+    color: #222222
+    +fws(400, 12px)
+    text-transform: uppercase
+  &__formheaders
+    display: block
+    margin-bottom: 33px
+    &_passwordMarginTop
+      margin-top: 16px
+  &__formguestOrRegistered
+    padding-left: 14px
+  &__sameStyleSentences
+    display: block
+    text-decoration: none
+    color: #b3b2b2
+    +fws(400, 13px)
+    transition: color 1.5s
+    &_margin
+      margin-bottom: 50px
+    &_hover:hover
+      color: $brandcolor
+      transition: color 1.5s
+  &__right
+    margin-right: 166px
+    &_margin
+      margin-bottom: 4px
+    &_dimensions
+      +wh(360px,45px)
+      border: 1px solid #eaeaea
+      background-color: #ffffff
+      outline: none
+      padding: 0 15px
+    &_starStyle
+      color: #ff0d0d
+    &_RequiredFields
+      color: #ff0d0d
+      +fws(400, 13px)
+    margin-bottom: 28px
+    &_button
+      +wh(180px, 50px)
+      border: 1px solid #eaeaea
+      background-color: #ffffff
+      color: #4a4a4a
+      +fws(700,14px)
+      text-transform: uppercase
+      transition: all 1.5s
+      outline: none
+      margin-top: 30px
+    &_button:hover
+      background-color: $brandcolor
+      color: white
+      transition: all 1.5s
+    &_ForgotPassword
+      color: #222222
+      text-decoration: none
+      +fws(400, 14px)
+      margin-left: 32px
+      transition: color 1.5s
+    &_ForgotPassword:hover
+      color: $brandcolor
+      transition: color 1.5s
+  &__radioform
+    margin: 27px 0
+    &_margintop
+      margin-top: 16px
+  &__continueBtn
+    +wh(180px, 50px)
+    border: 1px solid #eaeaea
+    background-color: #ffffff
+    color: #4a4a4a
+    +fws(700,14px)
+    text-transform: uppercase
+    margin-top: 34px
+    transition: all 1.5s
+    outline: none
+  &__continueBtn:hover
+    background-color: $brandcolor
+    color: white
+    transition: all 1.5s
+
+.checkout
+  &__headers
+    color: #222222
+    +fws(700, 16px)
+  &__list
+    display: block
+    height: 72px
+    border-bottom: 1px solid #eaeaea
+    line-height: 72px
+    outline: none
+  &__list::-webkit-details-marker
+    display: none
+
+details[open] > .checkout__list
+  border-bottom: none
+
+.runnerAndSubscribeformOncheckout
+  margin-top: 93px

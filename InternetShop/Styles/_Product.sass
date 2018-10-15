@@ -1,0 +1,343 @@
+.newarrivalsmenproducts, .newarrivalsmenproductsmesh, .newarrivalsblock, .pricerange, .pageselector
+  +fldj(flex, space-between)
+
+.newarrivalsmenWoman
+  background-color: #f8f3f4
+
+.newarrivals
+  +fldj(flex, space-between)
+  align-items: center
+  margin-bottom: 54px
+
+.leftpartnewarrivals
+  &__header
+    margin: 62px 0
+    color: $brandcolor
+    +fws(400, 24px)
+
+.rightpartnewarrivals
+  &__source
+    display: flex
+    padding-bottom: 7px
+  &__list
+    list-style: none
+  &__link
+    +fws(300, 14px)
+    color: #636363
+    text-decoration: none
+    display: block
+    &_coloredAndWeighed
+      color: $brandcolor
+      font-weight: 700
+  &__link:hover
+    color: $brandcolor
+
+.newarrivalsmendetails
+  width: 243px
+
+.detailsnewarrivals
+  &__summary
+    color: #6f6e6e
+    display: block
+    +fws(700, 14px)
+    line-height: 20px
+    padding: 7px 0 8px 11px
+    border-left: 5px solid #ef5b70
+    border-bottom: 1px solid #e7e7e7
+    margin-bottom: 20px
+    transition: all 1.5s
+    outline: none
+    &_colored
+      color: #ef5b70
+  &__summary:hover
+    color: white
+    background-color: $brandcolor
+    transition: all 1.5s
+  &__link
+    color: #6f6e6e
+    +fws(400, 14px)
+    line-height: 33px
+    margin-left: 17px
+    display: block
+    text-decoration: none
+    &_marginBottom
+      margin-bottom: 32px
+    &_marginTop
+      margin-top: 13px
+  &__link:hover
+    color: $brandcolor
+
+.detailsnewarrivals__summary::-webkit-details-marker
+  display: none
+
+.detailsnewarrivals__summary::after
+  content: '\25BE'
+  padding-left: 139px
+
+details[open] > .detailsnewarrivals__summary::after
+  content: '\25B4'
+  padding-left: 136px
+
+.padding1::after
+  padding-left: 161px
+
+.padding1
+  margin-bottom: 19px
+
+details[open] > .padding1::after
+  padding-left: 164px
+
+.padding2::after
+  padding-left: 142px
+
+details[open] > .padding2::after
+  padding-left: 145px
+
+.rowoftrending
+  display: flex
+  width: 176px
+  &__link
+    text-decoration: none
+    color: #6f6e6e
+    +fws(400, 14px)
+    display: block
+    flex: 1
+    text-align: center
+    &_padding1
+      padding-right: 11px
+    &_padding2
+      padding-left: 9px
+      padding-right: 11px
+    &_padding3
+      padding-left: 12px
+    &_padding4
+      text-align: left
+    &_padding5
+      margin-left: 0
+    &_padding6
+      padding-left: 12px
+  &__link:hover
+    color: $brandcolor
+
+.rowoftrending1MarginTop1
+  margin-top: 16px
+
+.rowoftrending1MarginTop2
+  margin-top: 6px
+
+.trendingnow, .price, .size
+  color: #6f6e6e
+  font-size: 14px
+  font-weight: 700
+  line-height: 20px
+  width: $widthofmesh/3
+  padding-top: 7px
+
+.size
+  &__header
+    padding-left: 8px
+
+.price
+  &__scale
+    margin: 11px 0
+    width: 100%
+  &__period
+    color: #6f6e6e
+    +fws(400,14px)
+    margin-left: 19px
+  &__header
+    padding-left: 19px
+
+.checkboxes
+  +fldj(flex, left)
+
+.checkbox, .checkboxdescription
+  display: flex
+  flex-direction: column
+
+.checkbox
+  &__inputTop
+    margin-top: 20px
+    &_XXSmargin
+      margin-left: 10px
+    &_XSmargin
+      margin-left: 24px
+    &_Smargin
+      margin-left: 31px
+    &_Mmargin
+      margin-left: 18px
+  &__labelTop
+    margin-top: 16px
+    &_XXSmargin
+      margin-left: 7px
+    &_XSmargin
+      margin-left: 7px
+    &_Smargin
+      margin-left: 9px
+    &_Mmargin
+      margin-left: 8px
+  &__inputBottom
+    margin-top: 13px
+    &_Lmargin
+      margin-left: 10px
+    &_XLmargin
+      margin-left: 24px
+    &_XXLmargin
+      margin-left: 31px
+  &__labelBottom
+    margin-top: 6px
+    &_Lmargin
+      margin-left: 8px
+    &_XLmargin
+      margin-left: 7px
+    &_XXLmargin
+      margin-left: 8px
+
+.checkboxdescription
+  label
+    color: #6f6e6e
+    +fws(400,14px)
+
+.sortbypanel
+  +flai(flex, center)
+  margin-top: 38px
+  margin-bottom: 11px
+  background-color: #f3f3f3
+  padding: 0 0 10px 2px
+  &__link
+    display: block
+    text-decoration: none
+    border: 1px solid #ebebeb
+    background-color: #ffffff
+    +fws(400, 14px)
+    color: #6f6e6e
+    transition: color 1.5s
+    line-height: 26px
+    margin-top: 7px
+    margin-left: 6px
+    padding: 0 10px
+  &__link:hover
+    color: $brandcolor
+    transition: color 1.5s
+
+.sortbyswitcher::-webkit-details-marker
+  display: none
+
+.sortbyswitcher::after
+  content: '\25BE'
+  padding-left: 21px
+
+details[open] > .sortbyswitcher::after
+  content: '\25B4'
+  padding-left: 21px
+
+.sortbyswitcher
+  border: 1px solid #ebebeb
+  border-left: none
+  padding: 0 8px
+  background-color: #ffffff
+  +fws(400, 14px)
+  color: #6f6e6e
+  margin-right: 2px
+  display: block
+  line-height: 26px
+  margin-top: 6px
+  outline: none
+
+.containeronproductspage
+  width: $widthofmesh
+  margin-top: 0
+  margin-bottom: 43px
+
+.nthchildrule:nth-child(n)
+  margin-top: 36px
+
+.pageselector
+  margin-bottom: 108px
+
+.nicepageselector
+  &__menu
+    list-style: none
+    display: flex
+    border-radius: 3px
+    border: 1px solid #ebebeb
+    background-color: #ffffff
+    padding: 8px 13px
+  &__link
+    text-decoration: none
+    display: block
+    padding: 0 8px
+    color: #c4c4c4
+    +fws(bold, 16px)
+    line-height: 26px
+    &_selected
+      color: $brandcolor
+  &__link:hover
+    color: $brandcolor
+
+.viewallbutton
+  &__link
+    display: block
+    text-decoration: none
+    padding: 11px 44px
+    color: #ef5b70
+    transition: all 1.5s
+    +fws(bold, 16px)
+    border-radius: 3px
+    border: 1px solid #ef5b70
+    background-color: #ffffff
+  &__link:hover
+    color: darkblue
+    background-color: $brandcolor
+    transition: all 1.5s
+
+.bonus
+  background: url("../img/Background.jpg")
+  height: 341px
+  margin-bottom: -97px
+
+.bonusinfo
+  display: flex
+
+.bonusinfoblock
+  text-align: center
+  display: flex
+  flex-direction: column
+  &__header
+    color: #fbfbfb
+    +fws(700, 20px)
+    letter-spacing: 0.5px
+    padding-top: 23px
+    &_delivery
+      margin-left: 25px
+      margin-top: 2px
+    &_discount
+      padding-top: 16px
+      margin-left: 80px
+    &_crown
+      margin-left: 82px
+  &__paragraph
+    color: #fbfbfb
+    +fws(300, 14px)
+    line-height: 23.95px
+    letter-spacing: 0.35px
+    margin-top: 5px
+    &_delivery
+      margin-top: 11px
+      margin-left: 26px
+    &_discount
+      margin-left: 79px
+      margin-top: 10px
+    &_crown
+      margin-left: 81px
+      margin-top: 10px
+  &__image
+    margin-top: 90px
+    &_truck
+      margin-left: 25px
+    &_discount
+      margin-left: 80px
+    &_crown
+      margin-left: 80px
+
+

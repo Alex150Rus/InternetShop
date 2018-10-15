@@ -1,0 +1,770 @@
+*
+  margin: 0
+  padding: 0
+
+.container
+  margin: auto
+  width: 1140px
+  height: 100%
+
+.conteinerForAll
+  min-height: 100%
+  display: flex
+  flex-direction: column
+
+.content
+  flex: 1
+
+.footermain
+  height: 100%
+
+body
+  font-family: 'Lato', sans-serif
+
+html, body
+  height: 100%
+
+@import "var"
+
+@import "mixin"
+
+.mainheader
+  border: solid 1px #ececec
+  box-sizing: border-box
+  background-color:  #ffffff
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.17)
+  height: 100px
+  &__headerInside
+    +fldj(flex, space-between)
+
+.headerInsideLeft
+  +flai(flex, center)
+
+.brand
+  +fws(300,27px)
+  margin-left: 9px
+  margin-top: 7px
+  &__bran
+    color:  #222222
+    text-decoration: none
+  &__D
+    color: $brandcolor
+    text-decoration: none
+    padding-left: 2px
+
+.formbrowse
+  margin-top: 30px
+  margin-left: -312px
+  position: relative
+  display: flex
+  &__buttonbrowse
+    border-bottom-left-radius: 3px
+    border-top-left-radius: 3px
+    border: solid 1px #e6e6e6
+    box-sizing: border-box
+    background: -webkit-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%)
+    background: -moz-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%)
+    background: -o-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%)
+    background: -ms-linear-gradient(-90deg, #f9f9f9 0%, #f5f5f5 100%)
+    background: linear-gradient(180deg, #f9f9f9 0%, #f5f5f5 100%)
+    +wh(87px, 38px)
+    color:  #222222
+    transition: color 1.5s
+    +fws(300, 14px)
+    text-align: center
+    line-height: 38px
+    display: block
+    padding-left: 7px
+    outline: none
+  &__buttonbrowse:hover
+    color: #f16d7f
+    transition: color 1.5s
+  &__buttonbrowse::-webkit-details-marker
+    display: none
+  &__buttonbrowse::after
+    content: '\25B8'
+    padding-left: 8px
+  &__inputsearch
+    border: solid 1px #e6e6e6
+    box-sizing: border-box
+    background-color:  #ffffff
+    +wh(281px, 38px)
+    color:  #a4a4a4
+    +fws(300, 14px)
+    padding-left: 13px
+    outline: none
+    padding-top: 2px
+    border-left: 0
+    letter-spacing: 0.35px
+  &__buttonlense
+    border-bottom-right-radius: 3px
+    border-top-right-radius: 3px
+    border: solid 1px #e6e6e6
+    box-sizing: border-box
+    border-left: 0
+    background-color:  #ffffff
+    transition: background-color 1.5s
+    +wh(36px, 38px)
+    outline: none
+  &__buttonlense:hover
+    background: $brandcolor
+    transition: background 1.5s
+
+details[open] > .formbrowse__buttonbrowse::after
+  content: '\25BE'
+
+.browselinks
+  list-style: none
+  position: absolute
+  z-index: 1
+  top: 30px
+  background-color:  #ffffff
+  +fws(400, 14px)
+  line-height: 28px
+  letter-spacing: 0.35px
+  padding-bottom: 11px
+  width: 262px
+  &__capitallink
+    margin: 4px 15px 9px 15px
+    line-height: 32px
+    font-size: 14px
+    border-bottom: 1px solid #e8e8e8
+    color: #232323
+    text-decoration: none
+    display: block
+  &__link
+    color:  #4f4f4f
+    text-decoration: none
+    padding: 0 20px
+    display: block
+  &__link:hover, &__capitallink:hover
+    color: $brandcolor
+
+.browselinks:before
+  content: ''
+  display: block
+  +wh(6px, 6px)
+  border-top: 1px #e8e8e8
+  border-left: 1px #e8e8e8
+  background-color: #ffffff
+  transform: rotate(45deg)
+  position: absolute
+  top: -3px
+  left: 68px
+
+.headerInsideRight
+  +flai(flex, center)
+
+.menucartaccount
+  display: flex
+  list-style: none
+  &__cart:hover .cartinfo
+    display: block
+  &__cart
+    margin-right: 26px
+    display: flex
+    align-items: flex-end
+    letter-spacing: 0.38px
+  &__myaccbutton
+    line-height: 38px
+    background-color:  $brandcolor
+    color:  #ffffff
+    +fws(400, 15px)
+  &__myaccbutton-link
+    text-decoration: none
+    color: #ffffff
+    transition: color 1.5s
+    display: block
+    padding: 0 17px 2px 20px
+  &__myaccbutton-link:hover
+    color: darkblue
+    transition: color 1.5s
+
+.cartinfo
+  position: absolute
+  top: 71px
+  border-radius: 5px
+  background-color: #ffffff
+  padding: 0 17px 20px 17px
+  border: solid 1px #e8e8e8
+  display: none
+
+.cartinfo:before
+  content: ''
+  display: block
+  +wh(8px, 8px)
+  border-top: 1px solid #e8e8e8
+  border-left: 1px solid #e8e8e8
+  background-color: #ffffff
+  transform: rotate(45deg)
+  position: absolute
+  top: -5px
+
+.productInCart
+  display: flex
+  border-bottom: solid 1px #ededed
+  padding-bottom: 16px
+  padding-top: 16px
+  &__imagelink
+    display: block
+  &__description
+    +flai(flex, center)
+    justify-content: space-between
+    margin-left: 14px
+  &__header
+    +fws(700, 12px)
+  &__link
+    color: #222222
+    text-decoration: none
+    text-transform: uppercase
+    display: block
+  &__link:hover
+    color: $brandcolor
+  &__crossbutton
+    margin-left: 55px
+  &__priceincart
+    color: #f16d7f
+    +fws(400, 12px)
+    margin-top: 12px
+  &__total
+    +fldj(flex, space-between)
+    margin-top: 19px
+    margin-bottom: 21px
+    color: #222222
+    +fws(700, 16px)
+  &__cartbuttons
+    display: block
+    border: 1px solid #eaeaea
+    background-color: #ffffff
+    text-decoration: none
+    text-align: center
+    padding: 18px 0
+    color: #4a4a4a
+    +fws(700, 14px)
+    transition: all 1.5s
+  &__cartbuttons:hover
+    color: #ef5b70
+    border-color: $brandcolor
+    transition: all 1.5s
+  &__emptyelement
+    height: 11px
+
+.fa-star
+  color: #e4af48
+  font-size: 12px
+
+.fa-star-half-alt
+  color: #e4af48
+  font-size: 12px
+
+.fa-times-circle
+  color: #c0c0c0
+  font-size: 16px
+  transition: color 1.5s
+
+.fa-times-circle:hover
+  color: $brandcolor
+  transition: color 1.5s
+
+.nav
+  margin-top: 10px
+  background-color:  #ffffff
+  &__menu
+    margin: auto
+    +wh(680px, 41px)
+    +fldj(flex, space-between)
+    align-items: center
+    position: relative
+    color:  #222222
+    +fws(700, 14px)
+  &__list-item
+    list-style: none
+  &__list-item:hover .megamenu
+    display: flex
+  &__menulinks
+    text-decoration: none
+    display: block
+    color:  #222222
+    +fws(700, 14px)
+    padding-bottom: 25px
+    padding-top: 10px
+    &_active
+      border-bottom: solid 3px #ef5b70
+      padding-bottom: 17px
+      padding-top: 4px
+  &__menulinks:hover
+    color: #f16d7f
+
+.megamenu
+  background-color: #ffffff
+  border-radius: 5px
+  position: absolute
+  top: 37px
+  display: flex
+  padding: 12px 0 13px 25px
+  border: solid 1px #e8e8e8
+  display: none
+  z-index: 1
+  &__megalink
+    color: #646464
+    +fws(400, 14px)
+    line-height: 28px
+    letter-spacing: 0.35px
+    text-decoration: none
+    display: block
+  &__megalink:hover, &__headingcolumn:hover
+    color: $brandcolor
+  &__headingcolumn
+    color: #232323
+    width: 235px
+    +fws(400, 14px)
+    line-height: 32px
+    letter-spacing: 0.35px
+    text-decoration: none
+    display: block
+    border-bottom: solid 1px #e8e8e8
+  &__columnbetween
+    padding-left: 46px
+    padding-right: 46px
+  &__headingcolumninside
+    padding-top: 21px
+  &__picture
+    margin-top: 15px
+    margin-left: -17px
+  &__list
+    list-style: none
+  div:last-of-type
+    padding-right: 21px
+
+.megamenu:before
+  content: ''
+  display: block
+  width: 8px
+  height: 8px
+  border-top: 1px solid #e8e8e8
+  border-left: 1px solid #e8e8e8
+  background-color: #ffffff
+  transform: rotate(45deg)
+  position: absolute
+  top: -5px
+
+.slider
+  height: 614px
+  background-color:  #e8e8e8
+  &__inside
+    +flai(flex, center)
+    background: url(../img/Slider.png) -230px -52px
+  &__inside-left
+    background-color:  #f16d7f
+    +wh (12px, 92px)
+  &__inside-right
+    padding-left: 12px
+  &__header
+    color: #222222
+    +fws(900,60px)
+    margin: -5px 0
+  &__headerpart
+    color:  #222222
+    +fws(900, 40px)
+  &__fashionword
+    color:  $brandcolor
+
+.productsmesh
+  +fldj(flex, space-between)
+  margin-top: 98px
+  &__formen, &__kids
+    +wh(560px, 542px)
+    position: relative
+    transition: transform 1.5s
+  &__menlabel, &__acclabel, &__womenlabel, &__kidslabel
+    background-color:  #ffffff
+    +wh(175px, 82px)
+    position: absolute
+    top: 26px
+    +fldj(flex, center)
+    flex-direction: column
+  &__header-first
+    margin-left: 18px
+    color:  #222222
+    +fws(900, 18px)
+    letter-spacing: 0.75px
+  &__header-second
+    color:  #f16d7f
+    font-size: 30px
+    margin-left: 19px
+    letter-spacing: 0.75px
+  &__women, &__accessories
+    +wh(560px, 261px)
+    position: relative
+    transition: transform 1.5s
+  &__accessories
+    background-color:  #dadad2
+    margin-top: 20px
+  &__accessories:hover, &__kids:hover, &__women:hover, &__formen:hover
+    transform: scale(1.05)
+    transition: transform 1.5s
+  &__kids
+    margin-top: 20px
+  &__acclabel
+    width: 225px
+  &__womenlabel
+    width: 162px
+  &__kidslabel
+    width: 180px
+
+.fetureditemscont
+  border: none
+
+.fetureditems
+  &__header
+    color:  #222222
+    +fws(700, 30px)
+    text-align: center
+    margin-top: 92px
+    letter-spacing: 0.75px
+  &__secondline
+    color:  #9f9f9f
+    +fws(400, 14px)
+    text-align: center
+    letter-spacing: 0.35px
+    padding-top: 6px
+
+.featureditemsmesh
+  +fldj(flex, space-between)
+  flex-wrap: wrap
+  margin-top: 59px
+
+.product
+  width: 261px
+  position: relative
+  box-shadow: unset
+  transition: box-shadow 1.5s
+  &__link
+    text-decoration: none
+  &__name
+    margin-top: 14px
+    margin-left: 14px
+    color:  #222222
+    +fws(400, 13px)
+  &__price
+    color:  #f16d7f
+    +fws(700, 16px)
+    margin-top: 11px
+    margin-left: 14px
+    padding-bottom: 21px
+  &__cartbuttonflex
+    width: 263px
+    +fldj(flex, center)
+    position: absolute
+    top: 98px
+    opacity: 0
+    transition: opacity 1.5s
+  &__invisiblebutton
+    padding: 12px
+    color:  #ffffff
+    +fws(700, 13px)
+    border: solid 1px #ffffff
+    box-sizing: border-box
+    background-color:  rgba(255, 255, 255, 0)
+    text-decoration: none
+    transition: all 1.5s
+  &__invisiblebutton:hover
+    background-color: #fff
+    color: black
+    transition: all 1.5s
+
+.product__image
+  transition: filter 1.5s
+
+.product:hover
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.16)
+  transition: box-shadow 1.5s
+  .product__image
+    filter: brightness(50%)
+    transition: filter 1.5s
+
+.product:hover .product__cartbuttonflex
+  opacity: 1
+  transition: opacity 1.5s
+
+.product:nth-child(n+5)
+  margin-top: 38px
+
+.browseallproducts
+  +fldj(flex, center)
+  margin-top: 57px
+  &__BrowseAllProductsButton
+    +fldj(flex, center)
+    text-decoration: none
+    background-color:  $brandcolor
+    color:  #ffffff
+  &__header
+    +fws(700, 16px)
+    line-height: 48px
+    padding: 0 20px
+    transition: color 1.5s
+    letter-spacing: 0.4px
+  &__header:hover
+    color: darkblue
+    transition: color 1.5s
+
+.percentoffer
+  margin-top: 113px
+  display: flex
+  &__offerleft
+    +wh(767px, 529px)
+    position: relative
+  &__offerleft:hover &__offertext
+    transform: scale(1.15)
+    transition: transform 1.5s
+  &__offertext
+    position: absolute
+    top: 130px
+    left: 34px
+    transition: transform 1.5s
+
+  &__header
+    color:  #ffffff
+    font-size: 54px
+    font-weight: 700
+    letter-spacing: 1.5px
+  &__header-secondline
+    font-size: 32px
+    letter-spacing: 1.5px
+  &__red
+    color:  #f16d7f
+    letter-spacing: 1.5px
+  &__offerright
+    +wh(373px, 529px)
+    background-color:  #222224
+    display: flex
+  &__redicons
+    width: 113px
+  &__imagered1
+    margin: 46px 0 124px 36px
+  &__imagered3
+    margin-left: 32px
+  &__imagered2
+    margin-left: 36px
+    margin-bottom: 110px
+  &__rightparttext
+    width: 260px
+  &__right-header
+    color:  #fbfbfb
+    +fws(700, 20px)
+    margin: 50px 0 11px 0
+    letter-spacing: 0.5px
+  &__text
+    color:  #fbfbfb
+    +fws(300, 14px)
+    line-height: 24px
+    letter-spacing: 0.35px
+
+.runnerAndSubscribeform
+  background: #e8e8e8 url(../img/lowbackground.jpg) no-repeat center
+  background-blend-mode: soft-light
+  height: 438px
+  margin-top: 97px
+
+.runnerandsubscribe
+  +fldj(flex, space-between)
+  &__runner
+    +fldj(flex, space-between)
+    width: 570px
+  &__textneargirl
+    margin: 117px 71px 0 0
+  &__texgirl
+    color:  rgba(34, 34, 36, 0.67)
+    font-size: 16px
+    font-style: italic
+    line-height: 26px
+    text-align: left
+  &__author
+    color:  #f16d7f
+    +fws(700, 16px)
+    margin-top: 10px
+  &__authorcountry
+    color:  #222224
+    +fws(300, 12px)
+    line-height: 14px
+  &__girl
+    margin-top: 111px
+  &__lines
+    display: flex
+    margin-top: 41px
+  &__lineneargirl
+    background-color:  #d6d6d6
+    +wh(38px,4px)
+    margin-right: 13px
+    &_red
+      background-color:  $brandcolor
+  &__subscribe
+    width: 570px
+    text-align: center
+    padding-top: 129px
+  &__header-subscribe
+    color:  rgba(34, 34, 36, 0.67)
+    +fws(400, 24px)
+    line-height: 54px
+    margin-bottom: -11px
+    letter-spacing: 0.6px
+  &__header-subscribe-nextline
+    color:  rgba(34, 34, 36, 0.67)
+    +fws(400, 14px)
+    line-height: 24px
+    letter-spacing: 0.35px
+    padding-left: 9px
+  &__subscribeform
+    margin: 28px 93px
+    display: flex
+  &__emailforsubscribe
+    background-color:  #e1e1e1
+    +wh(250px, 46px)
+    border-bottom-left-radius: 30px
+    border-top-left-radius: 30px
+    color:  rgba(34, 34, 36, 0.67)
+    +fws(400, 14px)
+    line-height: 54px
+    padding: 0 28px
+    border: 0
+    outline: none
+  &__subscribebtn
+    background-color:  $brandcolor
+    +wh(114px, 46px)
+    border-bottom-right-radius: 30px
+    border-top-right-radius: 30px
+    border: 0
+    color:  #ffffff
+    +fws(400, 14px)
+    transition: color 1.5s
+    outline: none
+  &__subscribebtn:hover
+    color: darkblue
+    transition: color 1.5s
+
+.companyinfoandlinks
+  +fldj(flex, space-between)
+
+.brandblock
+  +flai(flex, center)
+
+.brandinfo
+  margin: 109px 0 86px 0
+
+.underbrandtext
+  color:  #898989
+  +fws(300, 14px)
+  line-height: 24px
+  &__paragraph
+    margin-top: 20px
+    letter-spacing: 0.35px
+
+.links
+  &__header
+    color:  $brandcolor
+    +fws(700, 18px)
+    margin-top: 119px
+    margin-bottom: 25px
+    margin-right: 34px
+    letter-spacing: 0.4px
+  &__listitem
+    list-style: none
+    color:  #898989
+    +fws(400, 16px)
+    line-height: 42px
+    margin-left: 2px
+  &__link
+    text-decoration: none
+    color:  #898989
+    display: block
+  &__link:hover
+    color: $brandcolor
+
+.footermain
+  background-color:  #e6e6e6
+
+.footer
+  height: 79px
+  +fldj(flex, space-between)
+  align-items: center
+
+.leftfooter
+  color:  #7a7a7a
+  +fws(400, 16px)
+  letter-spacing: 0.4px
+
+.rightfooter
+  display: flex
+
+.footericons
+  margin-left: 8px
+  background-color:  #ffffff
+  +wh(32px, 32px)
+  +fldj(flex, center)
+  align-items: center
+  text-decoration: none
+  transition: background-color 1.5s
+  &__i
+    color: #b2b2b2
+    +fws(400, 16px)
+    &_selected
+      color: white
+      transition: color 1.5s
+
+.footericons:hover, .twittericon
+  background-color: $brandcolor
+  transition: background-color 1.5s
+
+.footericons:hover .footericons__i
+  color: white
+  transition: color 1.5s
+
+// page product.html code starts here
+
+@import "Product"
+
+// page Singlepage.html code starts here
+
+@import "Singlepage"
+
+//animation starts here
+
+.text-pop-up-right
+  -webkit-animation: text-pop-up-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+  animation: text-pop-up-right 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both
+
+@-webkit-keyframes text-pop-up-right
+  0%
+    -webkit-transform: translateX(0)
+    transform: translateX(0)
+    -webkit-transform-origin: 50% 50%
+    transform-origin: 50% 50%
+    text-shadow: none
+  100%
+    -webkit-transform: translateX(50px)
+    transform: translateX(50px)
+    -webkit-transform-origin: 50% 50%
+    transform-origin: 50% 50%
+    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3)
+
+@keyframes text-pop-up-right
+  0%
+    -webkit-transform: translateX(0)
+    transform: translateX(0)
+    -webkit-transform-origin: 50% 50%
+    transform-origin: 50% 50%
+    text-shadow: none
+  100%
+    -webkit-transform: translateX(50px)
+    transform: translateX(50px)
+    -webkit-transform-origin: 50% 50%
+    transform-origin: 50% 50%
+    text-shadow: 0 1px 0 #cccccc, 0 2px 0 #cccccc, 0 3px 0 #cccccc, 0 4px 0 #cccccc, 0 5px 0 #cccccc, 0 6px 0 #cccccc, 0 7px 0 #cccccc, 0 8px 0 #cccccc, 0 9px 0 #cccccc, 0 50px 30px rgba(0, 0, 0, 0.3)
+
+// checkout.html starts here
+
+@import "checkout"
+
+// ShoppingCart startsHere
+
+@import "ShoppingCart"

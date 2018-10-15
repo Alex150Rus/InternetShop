@@ -1,0 +1,177 @@
+
+.onshoppingcartpage
+  margin-bottom: 90px
+
+.ShoppingCartHeader
+  +fldj(flex, space-between)
+  align-items: center
+  padding-bottom: 20px
+  border-bottom: 1px solid #eaeaea
+  &__header
+    color: #222222
+    +fws(700, 13px)
+    text-transform: uppercase
+    &_AddProp
+      width: $width/3.2
+
+.ShoppingCartProduct
+  padding: 25px 0
+  +fldj(flex, space-between)
+  align-items: center
+  border-bottom: 1px solid #eaeaea
+
+  &__shipping, &__subtotal, &__action, &__subtotal
+    margin-right: 10px
+  &__unitPrice, &__quantity, &__shipping, &__subtotal, &__action
+    color: #656565
+    +fws(400, 13px)
+  &__quantity
+    +wh(54px, 30px)
+    border: 1px solid #eaeaea
+    background-color: #ffffff
+    text-align: center
+    line-height: 30px
+    outline: none
+  &__productdetails
+    width: $width/3.3
+    display: flex
+    align-items: center
+  &__description
+    margin-left: 21px
+    &_ProductName
+      color: #222222
+      +fws(400, 13px)
+      text-transform: uppercase
+      margin-bottom: 35px
+    &_ProductChar
+      color: #6f6e6e
+      +fws(400, 13px)
+      line-height: 20px
+    &_ProductCharName
+      +fws(300, 13px)
+
+.ShoppingCartButtons
+  +fldj(flex, space-between)
+  margin: 44px 0 63px 0
+  &__button
+    +wh(235px, 50px)
+    border: 1px solid #eaeaea
+    background-color: #ffffff
+    color: #4a4a4a
+    +fws(700, 14px)
+    transition: all 1.5s
+    outline: none
+  &__button:hover
+    background-color: $brandcolor
+    color: white
+    transition: all 1.5s
+
+.shoppingCartBeforeCheckOut
+  +fldj(flex, space-between)
+
+.shippingAddressCart, .couponDiscount
+  display: flex
+  flex-direction: column
+
+.shippingAddressCart
+  &__header
+    color: #222222
+    +fws(700, 16px)
+    text-transform: uppercase
+    margin-bottom: 19px
+  &__Country, &__StateZip
+    +wh(319px, 45px)
+    border: 1px solid #eaeaea
+    background-color: #ffffff
+    margin-bottom: 20px
+    color: #b1b1b1
+    +fws(300,13px)
+    display: block
+    padding: 0 18px
+    line-height: 45px
+    outline: none
+  &__Country::-webkit-details-marker
+    display: none
+  &__Country::after
+    content: '\25B8'
+    padding-left: 253px
+  &__button
+    margin-top: 2px
+    +wh(100px,35px)
+    border: 1px solid #eaeaea
+    background-color: #ffffff
+    color: #4a4a4a
+    +fws(700, 11px)
+    text-transform: uppercase
+    transition: all 1.5s
+    outline: none
+  &__button:hover
+    transition: all 1.5s
+    background-color: $brandcolor
+    color: white
+
+details[open] > .shippingAddressCart__Country::after
+  content: '\25BE'
+
+.couponDiscount
+  &__header
+    color: #222222
+    +fws(700, 16px)
+    font-size: 16px
+    font-weight: 700
+    text-transform: uppercase
+    margin-bottom: 25px
+  &__paragraph
+    color: #000000
+    +fws(300, 14px)
+    margin-bottom: 24px
+  &__button
+    margin-top: 5px
+    +wh(118px, 35px)
+    border: 1px solid #eaeaea
+    background-color: #ffffff
+    color: #4a4a4a
+    +fws(700, 11px)
+    text-transform: uppercase
+    transition: all 1.5s
+    outline: none
+  &__button:hover
+    transition: all 1.5s
+    background-color: $brandcolor
+    color: white
+
+.proceedToCheckOut
+  background: url("../img/shoppingcartpict/rectangle.jpg") no-repeat
+  padding: 40px 41px 0 44px
+  &__firstParagraph
+    margin-bottom: 14px
+    text-align: right
+    color: #4a4a4a
+    +fws(400, 11px)
+    text-transform: uppercase
+  &__spanSubTotal
+    margin-left: 15px
+  &__secondParagraph
+    padding-bottom: 22px
+    color: #222222
+    +fws(700, 16px)
+    text-transform: uppercase
+    text-align: right
+  &__spanGrandTotal
+    color: #f16d7f
+    margin-left: 15px
+  &__button
+    display: block
+    text-decoration: none
+    text-align: center
+    line-height: 50px
+    margin-top: 17px
+    +wh(273px, 50px)
+    background-color: #f16d7f
+    color: #ffffff
+    +fws(700, 16px)
+    text-transform: uppercase
+    transition: color 1.5s
+  &__button:hover
+    transition: color 1.5s
+    color: darkblue
