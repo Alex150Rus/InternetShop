@@ -10,8 +10,9 @@ $(document).ready(() => {
   let product8 = new Product(130, 'man-blue-hat', 52.00, 'img/Item8.png', '.featureditemsmesh');
 
   //Корзина
-  /*let mycart = new Cart('getCart.json');
+  let mycart = new Cart('getCart.json', '.cartinfo');
 
+  /*
   //Обработчик
   $('#products').on('click', '.buyBtn', e => {
       mycart.addProduct(e.target);
