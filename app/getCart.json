@@ -1,17 +1,19 @@
 {
-  "amount": 46600,
+  "amount": 104,
   "countGoods": 2,
   "contents": [
     {
-      "id_product": 123,
-      "product_name": "Ноутбук",
-      "price": 45600,
+      "id_product": 131,
+      "product_name": "man-green",
+      "picture_src": "img/productincart1.jpg",
+      "price": 52.00,
       "quantity": 1
     },
     {
-      "id_product": 456,
-      "product_name": "Мышка",
-      "price": 1000,
+      "id_product": 132,
+      "product_name": "girl-white",
+      "picture_src": "img/productibcart2.jpg",
+      "price": 52.00,
       "quantity": 1
     }
   ]
