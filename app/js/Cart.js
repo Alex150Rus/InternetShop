@@ -13,11 +13,14 @@ class Cart {
       class: 'one'
     });
 
-    let $totalAmount = $('<div/>', {
+    let $totalWrapper = $('<div/>', {
       class: 'productInCart__total'
     });
-    let $totalPrice = $('<div/>', {
-      class: 'productInCart__total'
+    let $totalAmount = $('<p/>', {
+      class: 'sum-amount'
+    });
+    let $totalPrice = $('<p/>', {
+      class: 'sum-price'
     });
 
     let $btnsWrapper = $('<div/>');
@@ -36,8 +39,9 @@ class Cart {
     });
 
     $cartItemsDiv.appendTo($(this.container));
-    $totalAmount.appendTo($(this.container));
-    $totalPrice.appendTo($(this.container));
+    $totalAmount.appendTo($totalWrapper);
+    $totalPrice.appendTo($totalWrapper);
+    $totalWrapper.appendTo($(this.container));
 
     $btnLinkCheckout.appendTo($btnsWrapper);
     $emptyDiv.appendTo($btnsWrapper);
@@ -75,8 +79,10 @@ class Cart {
     });
 
     let $pictureOfProductIncart = $('<img/>',{
-      src: product.picture_src,
-      alt: product.product_name
+      src: product.picture,
+      alt: product.product_name,
+      width: '72px',
+      height: '85px',
     });
 
     let $productInCartDescriptionWrapper = $('<div/>', {
@@ -93,15 +99,16 @@ class Cart {
       text: product.product_name
     });
 
-
-
-    let $deleteBtn = $('<button\>', {
-      class: 'deleteBtn',
+    let $deleteBtn = $('<div\>', {
+      class: 'productInCart__crossbutton',
       id: 'deleteBtn',
-      text: 'x',
       'data-id': product.id_product,
       'data-name': product.product_name,
       'data-price': product.price
+    });
+
+    let $iconForDeleteButton = $('<i/>', {
+      class: "fas fa-times-circle"
     });
 
     $linkWrapperForPicture.append($pictureOfProductIncart);
@@ -109,23 +116,25 @@ class Cart {
 
     $productInCartNameWrapper.append($productInCartNameLink);
     $wrapperForNameStars.append($productInCartNameWrapper);
+    for (let i = 0; i < 4; i++) {
+      $wrapperForNameStars
+        .append($('<i class="fas fa-star"></i>'))
+    }
+    $wrapperForNameStars.append($('<i class="fas fa-star-half-alt"></i>'));
+    $wrapperForNameStars
+      .append($(`<p class="productInCart__priceincart">${product.quantity} x $${Number(product.price).toFixed(2)}</p>`));
+
     $productInCartDescriptionWrapper.append($wrapperForNameStars);
     $container.append($productInCartDescriptionWrapper);
-    $container.append($deleteBtn);
+    $deleteBtn.append($iconForDeleteButton);
+    $productInCartDescriptionWrapper.append($deleteBtn);
 
     $container.prependTo($('.cartinfo'))
-
-
-    /* $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
-    $container.append($(`<p class="product-price">${product.price} руб</p>`));
-    $container.append($deleteBtn);
-    $container.appendTo($('.cartinfo'));
-    */
   }
 
   _renderSum() {
-    $('.sum-amount').text(`Всего товаров в корзине: ${this.countGoods}`);
-    $('.sum-price').text(`Общая сумма: ${this.amount} руб`);
+    $('.sum-amount').text('TOTAL');
+    $('.sum-price').text(`$${Number(this.amount).toFixed(2)}`);
   }
 
   addProduct(element) {
@@ -141,7 +150,8 @@ class Cart {
         id_product: productId,
         price: +$(element).data('price'),
         product_name: $(element).data('name'),
-        quantity: 1
+        quantity: 1,
+        picture: $(element).data('picture')
       };
       this.basketItems.push(product);
       this.countGoods += product.quantity;
@@ -153,8 +163,7 @@ class Cart {
 
   _updateCart(product) {
     let $container = $(`div[data-product="${product.id_product}"]`);
-    $container.find('.product-quantity').text(product.quantity);
-    $container.find('.product-price').text(`${product.quantity * product.price} руб`);
+    $container.find('.productInCart__priceincart').text(`${product.quantity} x $${Number(product.price).toFixed(2)}`);
   }
 
   remove(element) {
@@ -169,7 +178,7 @@ class Cart {
 
     }
     this._renderSum();
-    element.parent().remove();
+    element.closest('.productInCart').remove();
     console.log(this.basketItems);
   }
 }

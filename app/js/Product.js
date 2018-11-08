@@ -10,7 +10,7 @@ class Product {
 
   _render(container) {
     let $wrapper = $('<div/>', {
-      class: 'product'
+      class: 'product',
     });
 
     let $linkWrapperImg = $('<a/>', {
@@ -33,15 +33,12 @@ class Product {
       text: `$ ${Number(this.price).toFixed(2)}`
     });
 
-    let $buyBtn = $('<div/>', {
+    let $buyBtn = $('<button/>', {
       class: 'product__cartbuttonflex product__invisiblebutton',
       'data-id': this.id,
       'data-name': this.title,
-      'data-price': this.price
-    });
-
-    let $buyBtnIcon = $('<i/>', {
-      class: 'product__cart-image fas fa-shopping-cart',
+      'data-price': this.price,
+      'data-picture': this.img,
       text: 'Add to Cart'
     });
 
@@ -52,8 +49,6 @@ class Product {
     $price.appendTo($linkWrapperImg);
     $linkWrapperImg.appendTo($wrapper);
 
-
-    $buyBtnIcon.appendTo($buyBtn);
     $buyBtn.appendTo($wrapper);
 
     $(container).append($wrapper);

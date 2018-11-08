@@ -12,18 +12,18 @@ $(document).ready(() => {
   //Корзина
   let mycart = new Cart('getCart.json', '.cartinfo');
 
-  /*
+
   //Обработчик
-  $('#products').on('click', '.buyBtn', e => {
+  $('.featureditemsmesh').on('click', '.product__cartbuttonflex', e => {
       mycart.addProduct(e.target);
-      console.log(e.target);
+    $(e.target).effect('highlight');
+      console.log(mycart.basketItems)
   });
 
   //ещё один обработчик
-$('.cart-items-wrap').on('click', '.deleteBtn', event=> {
-    let $CurrentProduct = $(event.target);
+$('.cartinfo').on('click', '.productInCart__crossbutton', event=> {
+    let $CurrentProduct = $(event.target).parent();
     mycart.remove($CurrentProduct)
-});
-  console.log(mycart);
-  */
+})
+
 });

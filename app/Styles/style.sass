@@ -188,6 +188,7 @@ details[open] > .formbrowse__buttonbrowse::after
   padding: 0 17px 20px 17px
   border: solid 1px #e8e8e8
   display: none
+  z-index: 1
 
 .cartinfo:before
   content: ''
@@ -213,6 +214,7 @@ details[open] > .formbrowse__buttonbrowse::after
     margin-left: 14px
   &__header
     +fws(700, 12px)
+    width: 90px
   &__link
     color: #222222
     text-decoration: none
@@ -372,6 +374,7 @@ details[open] > .formbrowse__buttonbrowse::after
 .productsmesh
   +fldj(flex, space-between)
   margin-top: 98px
+  z-index: 0
   &__formen, &__kids
     +wh(560px, 542px)
     position: relative
@@ -454,8 +457,8 @@ details[open] > .formbrowse__buttonbrowse::after
     margin-left: 14px
     padding-bottom: 21px
   &__cartbuttonflex
-    width: 30%
     +fldj(flex, center)
+    left: 85px
     position: absolute
     top: 98px
     opacity: 0
