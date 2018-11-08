@@ -10,19 +10,41 @@ class Cart {
 
   _render() {
     let $cartItemsDiv = $('<div/>', {
-      class: 'cart-items-wrap'
+      class: 'one'
     });
 
     let $totalAmount = $('<div/>', {
-      class: 'cart-summary sum-amount'
+      class: 'productInCart__total'
     });
     let $totalPrice = $('<div/>', {
-      class: 'cart-summary sum-price'
+      class: 'productInCart__total'
     });
-    $(this.container).text('Корзина');
+
+    let $btnsWrapper = $('<div/>');
+    let $btnLinkCheckout = $('<a/>',{
+      class: 'productInCart__cartbuttons',
+      href: 'checkout.html',
+      text: 'CHECKOUT'
+    });
+    let $emptyDiv = $('<div/>', {
+      class: 'productInCart__emptyelement'
+    });
+    let $btnLinkGoToCart = $('<a/>',{
+      class: 'productInCart__cartbuttons',
+      href: 'ShoppingCart.html',
+      text: 'GO TO CART'
+    });
+
     $cartItemsDiv.appendTo($(this.container));
     $totalAmount.appendTo($(this.container));
     $totalPrice.appendTo($(this.container));
+
+    $btnLinkCheckout.appendTo($btnsWrapper);
+    $emptyDiv.appendTo($btnsWrapper);
+    $btnLinkGoToCart.appendTo($btnsWrapper);
+
+    $btnsWrapper.appendTo(this.container);
+
   }
 
   _init(source) {
@@ -42,9 +64,37 @@ class Cart {
 
   _renderItem(product) {
     let $container = $('<div/>', {
-      class: 'cart-item',
+      class: 'productInCart',
       'data-product': product.id_product
     });
+
+    let $linkWrapperForPicture = $('<a/>', {
+      class: 'productInCart__imagelink',
+      href: '#',
+      target: "_blank"
+    });
+
+    let $pictureOfProductIncart = $('<img/>',{
+      src: product.picture_src,
+      alt: product.product_name
+    });
+
+    let $productInCartDescriptionWrapper = $('<div/>', {
+      class: 'productInCart__description'
+    });
+
+    let $wrapperForNameStars = $('<div/>');
+    let $productInCartNameWrapper = $('<h2/>', {
+      class: 'productInCart__header'
+    });
+    let $productInCartNameLink = $('<a/>', {
+      class: 'productInCart__link',
+      href: '#',
+      text: product.product_name
+    });
+
+
+
     let $deleteBtn = $('<button\>', {
       class: 'deleteBtn',
       id: 'deleteBtn',
@@ -54,11 +104,23 @@ class Cart {
       'data-price': product.price
     });
 
-    $container.append($(`<p class="product-name">${product.product_name}</p>`));
-    $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
+    $linkWrapperForPicture.append($pictureOfProductIncart);
+    $container.append($linkWrapperForPicture);
+
+    $productInCartNameWrapper.append($productInCartNameLink);
+    $wrapperForNameStars.append($productInCartNameWrapper);
+    $productInCartDescriptionWrapper.append($wrapperForNameStars);
+    $container.append($productInCartDescriptionWrapper);
+    $container.append($deleteBtn);
+
+    $container.prependTo($('.cartinfo'))
+
+
+    /* $container.append($(`<p class="product-quantity">${product.quantity}</p>`));
     $container.append($(`<p class="product-price">${product.price} руб</p>`));
     $container.append($deleteBtn);
-    $container.appendTo($('.cart-items-wrap'));
+    $container.appendTo($('.cartinfo'));
+    */
   }
 
   _renderSum() {
