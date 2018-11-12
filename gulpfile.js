@@ -2,7 +2,6 @@ let gulp = require('gulp'), //подключаем Gulp
   sass = require('gulp-sass'), // компиляция Sass
   uglifyJs = require('gulp-uglifyes'), //минификация JS
   autoPrefixer = require('gulp-autoprefixer'), // вендорные префиксы
-  concat = require('gulp-concat'), // конкатенация файлов
   bs = require('browser-sync'), // сервер
   rename = require('gulp-rename'), // переименование файлов
   htmlMin = require ('gulp-htmlmin'), // минификация html
