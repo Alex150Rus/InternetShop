@@ -96,9 +96,43 @@ gulp.task('server', ()=>{
   })
 });
 
-gulp.task('html:watch', ()=>{});
+gulp.task('html:watch', ()=>{
+  return gulp.watch('app/*.html', gulp.series(('html'), (done) => {
+    bs.reload();
+    done()
+  }))
+});
+
+gulp.task('sass:watch', ()=>{
+  return gulp.watch('app/Styles/*.sass', gulp.series(('sass'), (done) => {
+    bs.reload();
+    done()
+  }))
+});
+
+gulp.task('img:watch', ()=>{
+  return gulp.watch('app/img/**/*.+(img|png)', gulp.series(('img'), (done) => {
+    bs.reload();
+    done()
+  }))
+});
+
+gulp.task('js:watch', ()=>{
+  return gulp.watch('app/js/*.js', gulp.series(('js:es6'), (done) => {
+    bs.reload();
+    done()
+  }))
+});
+
+gulp.task('json:watch', ()=>{
+  return gulp.watch('app/getCart.json', gulp.series(('json'), (done) => {
+    bs.reload();
+    done()
+  }))
+});
 
 // определим задачу по умолчанию [список задач, которые будут выполнены] 'sass', 'html', 'clean' - но это старый
 // синтаксис
 
-gulp.task('default', gulp.series('clean', gulp.parallel('sass', 'html', 'img', 'js:es6', 'js:babel', 'bower', 'json', 'server')));
+gulp.task('default', gulp.series('clean', gulp.parallel('sass', 'html', 'img', 'js:es6', 'js:babel', 'bower', 'json',
+  'server', 'html:watch', 'sass:watch', 'img:watch', 'js:watch', 'json:watch')));
