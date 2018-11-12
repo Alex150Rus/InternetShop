@@ -1,0 +1,20 @@
+{
+  "name": "app",
+  "authors": [
+    "Alexander <43272321+Alex150Rus@users.noreply.github.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery-ui": "^1.12.1"
+  }
+}

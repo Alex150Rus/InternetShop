@@ -1,0 +1,20 @@
+{
+  "amount": 104,
+  "countGoods": 2,
+  "contents": [
+    {
+      "id_product": 131,
+      "product_name": "man-green",
+      "picture": "img/productincart1.jpg",
+      "price": 52.00,
+      "quantity": 1
+    },
+    {
+      "id_product": 132,
+      "product_name": "girl-white",
+      "picture": "img/productibcart2.jpg",
+      "price": 52.00,
+      "quantity": 1
+    }
+  ]
+}

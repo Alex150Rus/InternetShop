@@ -196,7 +196,8 @@ details[open] > .formbrowse__buttonbrowse::after {
   background-color: #ffffff;
   padding: 0 17px 20px 17px;
   border: solid 1px #e8e8e8;
-  display: none; }
+  display: none;
+  z-index: 1; }
 
 .cartinfo:before {
   content: "";
@@ -224,7 +225,8 @@ details[open] > .formbrowse__buttonbrowse::after {
     margin-left: 14px; }
   .productInCart__header {
     font-weight: 700;
-    font-size: 12px; }
+    font-size: 12px;
+    width: 90px; }
   .productInCart__link {
     color: #222222;
     text-decoration: none;
@@ -398,7 +400,8 @@ details[open] > .formbrowse__buttonbrowse::after {
 .productsmesh {
   display: flex;
   justify-content: space-between;
-  margin-top: 98px; }
+  margin-top: 98px;
+  z-index: 0; }
   .productsmesh__formen, .productsmesh__kids {
     width: 560px;
     height: 542px;
@@ -480,7 +483,8 @@ details[open] > .formbrowse__buttonbrowse::after {
     margin-left: 14px;
     color: #222222;
     font-weight: 400;
-    font-size: 13px; }
+    font-size: 13px;
+    text-transform: capitalize; }
   .product__price {
     color: #f16d7f;
     font-weight: 700;
@@ -489,9 +493,9 @@ details[open] > .formbrowse__buttonbrowse::after {
     margin-left: 14px;
     padding-bottom: 21px; }
   .product__cartbuttonflex {
-    width: 263px;
     display: flex;
     justify-content: center;
+    left: 85px;
     position: absolute;
     top: 98px;
     opacity: 0;
