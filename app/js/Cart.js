@@ -197,7 +197,18 @@ class Cart {
     localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
     localStorage.setItem('amount', JSON.stringify(this.amount));
     this._renderSum();
-    element.closest('.productInCart').remove();
+    ($(`.productInCart[data-product='${$productId}']`)).remove();
     console.log(this.basketItems);
+  }
+
+  clearCart(){
+    this.countGoods = 0;
+    this.amount = 0;
+    this.basketItems = [];
+    localStorage.setItem('myitems', JSON.stringify(this.basketItems));
+    localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
+    localStorage.setItem('amount', JSON.stringify(this.amount));
+    this._renderSum();
+    $('.productInCart').remove()
   }
 }

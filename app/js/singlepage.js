@@ -43,7 +43,6 @@ $(document).ready(() => {
     $needToBeActive.addClass('nav__menulinks_active');
   });
 
-
   let $addToCartButtonBig = $('.ProductProperties__cartlink');
   $addToCartButtonBig.attr('data-id', 1)
     .attr('data-name', 'MOSCHINO CHEAP AND CHIC')

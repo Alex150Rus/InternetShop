@@ -1,5 +1,5 @@
-class Form  {
-  constructor (src, container) {
+class Form {
+  constructor(src, container) {
     this.src = src;
     this.container = container;
     this.feedback = null;
@@ -10,7 +10,26 @@ class Form  {
     this._eventHandlerFeedbacks();
     this._idCount();
   }
-  _render(){
+
+  _render() {
+
+    let $wrapper = $('<div/>', {
+      class: 'wrapperFeedbackPost',
+    });
+
+    let $wrapperForNameField = $('<div/>', {
+      class: 'wrapperFeedbackPost',
+      id: 'wrapperFeedbackPost'
+    });
+    let $nameLabel = $('<label for="nameInput" class="feedbackLabel">Please, input your name</label>');
+    let $nameInput = $('<input type="text" id="nameInput" placeholder="Name">');
+    let $nameError = $('<div id="errorName" class="opacity">place for error notice</div>');
+
+    $nameLabel.appendTo($wrapperForNameField);
+    $nameInput.appendTo($wrapperForNameField);
+    $nameError.appendTo($wrapperForNameField);
+
+
     let $label = $('<label/>', {
       for: 'feedbackTextArea',
       class: 'feedbackLabel',
@@ -22,8 +41,8 @@ class Form  {
       maxlength: 600,
     });
 
-    let $paragraphLength = $('<p/>',{
-      text: 'Максимальное кол-во символов: 600',
+    let $paragraphLength = $('<p/>', {
+      text: 'max qty of letters: 600',
       class: 'symbols'
     });
 
@@ -43,24 +62,28 @@ class Form  {
       text: 'Submit Feedback'
     });
 
-    $label.appendTo(this.container);
-    $textarea.appendTo(this.container);
-    $paragraphLength.appendTo(this.container);
-    $btnSubmitFeedback.appendTo(this.container);
+
+    $wrapperForNameField.appendTo($wrapper);
+    $label.appendTo($wrapper);
+    $textarea.appendTo($wrapper);
+    $paragraphLength.appendTo($wrapper);
+    $wrapper.appendTo(this.container);
+    $btnSubmitFeedback.appendTo($wrapper);
     $feedbacksWrapper.appendTo(this.container);
   }
-  _getFeedbackFromServer(){
+
+  _getFeedbackFromServer() {
     fetch(this.src)
-      .then (result => result.json())
-      .then (data => {
+      .then(result => result.json())
+      .then(data => {
         console.log(data);
-        for(const feedback of data)
-        this._renderFeedbacks(feedback.text, feedback.author, feedback.id)
+        for (const feedback of data)
+          this._renderFeedbacks(feedback.text, feedback.author, feedback.id)
         this._idCount()
       })
   }
 
-  _renderFeedbacks(text, author, id){
+  _renderFeedbacks(text, author, id) {
     let $feedbackDiv = $('<div/>', {
       class: 'feedbackDiv',
       id: id,
@@ -81,13 +104,13 @@ class Form  {
     let $BtnApproveFeedback = $('<button/>', {
       class: 'BtnApprove',
       id: id,
-      text: 'утвердить'
+      text: 'approve'
     });
 
     let $BtnDeleteFeedback = $('<button/>', {
       class: 'BtnDelete',
       id: id,
-      text: 'удалить'
+      text: 'delete'
     });
 
     $author.appendTo($feedbackDiv);
@@ -98,31 +121,61 @@ class Form  {
     $feedbackDiv.prependTo(this.feedback)
   }
 
-  _eventHandlerSubmit(){
+  _eventHandlerSubmit() {
     $(this.container).on('click', '#submitFeedbackBtn', event => {
       event.preventDefault();
+      this.validate();
+
       let textarea = document.getElementById('feedbackTextArea');
-      if (textarea.value.length !== 0) {
+      let nameInput = document.getElementById('nameInput');
+      let errorField = document.getElementById('errorName');
+      if (textarea.value.length !== 0 && errorField.getAttribute('data-valid') === 'ок') {
         this._idCount();
-        this._renderFeedbacks(textarea.value, textarea.value.length, this.idCount);
-        console.log(this.idCount);
+        this._renderFeedbacks(textarea.value, nameInput.value, this.idCount);
       }
     })
   }
 
-  _eventHandlerFeedbacks(){
+  _eventHandlerFeedbacks() {
     $(this.feedback).on('click', '.BtnDelete', event => {
       event.preventDefault();
-      $(event.target).parent().remove()
+      $(event.target).closest('.feedbackDiv').remove()
     });
     $(this.feedback).on('click', '.BtnApprove', event => {
       event.preventDefault();
       $(event.target).closest('.feedbackDiv').addClass('approved');
+      $(event.target).remove()
     })
   }
 
-  _idCount(){
+  _idCount() {
     this.idCount++
   }
 
+  validate() {
+    // полe name
+    if (document.getElementById('wrapperFeedbackPost')) {
+      const name = document.getElementById('nameInput').value;
+      this.checkName(name);
+    }
+  }
+
+  checkName(name){
+    if (/^[a-zа-яё]{1,30}$/i.test(name)){
+      console.log('Имя введено верно');
+      document.getElementById('errorName').innerHTML ='ok';
+      document.getElementById('errorName').setAttribute('data-valid', 'ок')
+    } else if (name === '') {
+      const errorNameEl = document.getElementById('errorName');
+      document.getElementById('errorName').setAttribute('data-valid', 'bad');
+      errorNameEl.classList.add('errorColor');
+      errorNameEl.innerHTML = "please, input you name";
+    } else {
+      const errorNameEl = document.getElementById('errorName');
+      document.getElementById('errorName').setAttribute('data-valid', 'bad');
+      errorNameEl.classList.add('errorColor');
+      errorNameEl.innerHTML = "only letters allowed";
+      console.log('Имя введено неверно');
+    }
+  }
 }
