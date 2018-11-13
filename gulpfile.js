@@ -87,7 +87,7 @@ gulp.task('json',()=>{
 
 gulp.task('server', ()=>{
   return bs({
-    browser: 'firefox',
+    browser: 'chrome',
     //указываем серверу из какой папки отображать
     server: {
       baseDir: 'dist'
