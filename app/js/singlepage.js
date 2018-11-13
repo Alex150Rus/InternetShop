@@ -52,7 +52,9 @@ $(document).ready(() => {
   $addToCartButtonBig.on('click', e => {
     mycart.addProduct(e.target);
     $(e.target).effect('highlight');
-  })
+  });
+
+  let form = new Form('feedback.json', '#feedback')
 
 
 });

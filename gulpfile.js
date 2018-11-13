@@ -78,7 +78,7 @@ gulp.task('bower',()=>{
 // перенесём json файл
 
 gulp.task('json',()=>{
-  return gulp.src('app/getCart.json')
+  return gulp.src('app/*.json')
     .pipe(gulp.dest('dist'))
 });
 
@@ -124,7 +124,7 @@ gulp.task('js:watch', ()=>{
 });
 
 gulp.task('json:watch', ()=>{
-  return gulp.watch('app/getCart.json', gulp.series(('json'), (done) => {
+  return gulp.watch('app/*.json', gulp.series(('json'), (done) => {
     bs.reload();
     done()
   }))

@@ -133,3 +133,80 @@
   position: absolute
   left: 0
   z-index: -2
+
+//feedback Form sass
+.feedbackForm
+  display: flex
+  flex-direction: column
+
+.feedbackTextAreaTag
+  width: 250px
+  height: 210px
+  margin-left: 39%
+  border-color: #eaeaea
+
+.feedbackLabel
+  +fws(700, 14px)
+  width: 250px
+  margin-left: 39%
+  margin-top: 10px
+  margin-bottom: 10px
+  padding-left: 42px
+
+.submitBtn
+  width: 250px
+  height: 25px
+  margin-left: 39%
+  color: #ef5b70
+  +fws(600, 14px)
+  border: 1px solid #ef5b70
+  background-color: #ffffff
+  transition: all 1.5s
+
+.submitBtn:hover
+  background-color: $brandcolor
+  color: darkblue
+  transition: all 1.5s
+  outline: none
+
+.symbols
+  +fws(300, 14px)
+  margin-left: 39%
+  margin-top: 10px
+  margin-bottom: 10px
+
+
+.feedbacksWrapper
+  width: 1141px
+  display: flex
+  justify-content: space-around
+  margin-top: 10px
+  flex-wrap: wrap
+
+.feedbackDiv
+  margin-top: 10px
+  border: 1px solid #eaeaea
+  width: 226px
+  height: 250px
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+
+.BtnApprove, .BtnDelete
+  margin-top: 10px
+  width: 100px
+  height: 25px
+  margin-left: 10px
+
+.feedbackText
+  margin-left: 10px
+  width: 205px
+  height: 150px
+  border-color: #eaeaea
+
+.feedbackAuthor
+  margin-left: 10px
+  margin-bottom: 5px
+
+.approved
+  background: $brandcolor
