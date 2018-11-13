@@ -53,17 +53,31 @@ class Cart {
 
   _init(source) {
     this._render();
-    fetch(source)
-      .then(result => result.json())
-      .then(data => {
-        for (let product of data.contents) {
-          this.basketItems.push(product);
-          this._renderItem(product);
-        }
-        this.countGoods = data.countGoods;
-        this.amount = data.amount;
-        this._renderSum()
-      });
+    if (!localStorage.getItem('myitems')) {
+      fetch(source)
+        .then(result => result.json())
+        .then(data => {
+          for (let product of data.contents) {
+            this.basketItems.push(product);
+            this._renderItem(product);
+          }
+          this.countGoods = data.countGoods;
+          this.amount = data.amount;
+          localStorage.setItem('myitems', JSON.stringify(this.basketItems));
+          localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
+          localStorage.setItem('amount', JSON.stringify(this.amount));
+          this._renderSum()
+        });
+    } else {
+      this.basketItems = JSON.parse(localStorage.getItem('myitems'));
+      this.countGoods = JSON.parse(localStorage.getItem('countGoods'));
+      this.amount = JSON.parse(localStorage.getItem('amount'));
+      for (let product of this.basketItems) {
+        this._renderItem(product);
+        this._updateCart(product);
+      }
+      this._renderSum()
+    }
   }
 
   _renderItem(product) {
@@ -158,6 +172,9 @@ class Cart {
       this.amount += product.price;
       this._renderItem(product);
     }
+    localStorage.setItem('myitems', JSON.stringify(this.basketItems));
+    localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
+    localStorage.setItem('amount', JSON.stringify(this.amount));
     this._renderSum();
   }
 
@@ -175,10 +192,23 @@ class Cart {
       this.basketItems = this.basketItems.filter(function(item) {
         return item !== find
       })
-
     }
+    localStorage.setItem('myitems', JSON.stringify(this.basketItems));
+    localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
+    localStorage.setItem('amount', JSON.stringify(this.amount));
     this._renderSum();
-    element.closest('.productInCart').remove();
+    ($(`.productInCart[data-product='${$productId}']`)).remove();
     console.log(this.basketItems);
+  }
+
+  clearCart(){
+    this.countGoods = 0;
+    this.amount = 0;
+    this.basketItems = [];
+    localStorage.setItem('myitems', JSON.stringify(this.basketItems));
+    localStorage.setItem('countGoods', JSON.stringify(this.countGoods));
+    localStorage.setItem('amount', JSON.stringify(this.amount));
+    this._renderSum();
+    $('.productInCart').remove()
   }
 }
